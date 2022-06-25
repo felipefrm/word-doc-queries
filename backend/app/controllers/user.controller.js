@@ -9,7 +9,7 @@ routes.post(`/users/login`, async (req, res) => {
     where: { email: req.body.email, password: req.body.password },
   });
 
-  if (!user) throw new Error(exception, "User not found");
+  if (!user) return res.json({error: "Invalid credentials"});
 
   const token = jwt.sign(
     {
@@ -23,7 +23,7 @@ routes.post(`/users/login`, async (req, res) => {
     }
   );
 
-  res.send({
+  res.json({
     user: user,
     token: token,
   });
