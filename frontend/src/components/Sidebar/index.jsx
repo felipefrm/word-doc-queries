@@ -14,7 +14,10 @@ export function Sidebar() {
         <SidebarButton method="word-sentences" />
         <SidebarButton method="top-words" />
       </Flex>
+
       <Button
+        fontSize="xl"
+        fontWeight="400"
         leftIcon={<BiLogOut />}
         onClick={() => signOut()}
       >

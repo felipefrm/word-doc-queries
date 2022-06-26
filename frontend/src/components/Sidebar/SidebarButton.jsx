@@ -17,6 +17,8 @@ export function SidebarButton({ method }) {
       variant="ghost"
       px="7"
       py="2.5"
+      fontWeight="400"
+      fontSize="xl"
       onClick={() => setSelectedMethod(method)}
     >
       {methods[method]}
