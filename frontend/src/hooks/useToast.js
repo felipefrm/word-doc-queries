@@ -21,6 +21,13 @@ export function useToast() {
       description,
       status: 'error',
       ...defaultConfigs
+    }),
+
+    info: ({ title, description = null }) => toast({
+      title,
+      description,
+      status: 'info',
+      ...defaultConfigs
     })
   }
 }
