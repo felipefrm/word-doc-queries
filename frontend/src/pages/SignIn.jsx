@@ -10,7 +10,7 @@ import {
   Text
 } from "@chakra-ui/react";
 
-import bgImg from '../../assets/images/bg.png'
+import bgImg from '../../assets/images/bg.jpg'
 
 export function SignIn() {
   return (
