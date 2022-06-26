@@ -18,8 +18,9 @@ export function Sidebar() {
       <Button
         fontSize="xl"
         fontWeight="400"
+        shadow="lg"
         leftIcon={<BiLogOut />}
-        onClick={() => signOut()}
+        onClick={signOut}
       >
         Sair
       </Button>

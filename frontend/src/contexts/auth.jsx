@@ -37,13 +37,11 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  function signOut(callback) {
+  function signOut() {
     setUser(null)
 
     localStorage.removeItem("@Auth:user");
     localStorage.removeItem("@Auth:token");
-
-    callback()
   }
 
   return (
