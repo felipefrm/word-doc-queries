@@ -69,7 +69,7 @@ export function SignIn() {
       >
         <Stack spacing={12}>
           <Box>
-            <Heading fontSize="xl" p="32px">Login</Heading>
+            <Heading fontSize="2xl" px="8" py="7">Login</Heading>
             <Divider />
           </Box>
           <Flex
@@ -99,6 +99,7 @@ export function SignIn() {
               bgColor="blue.600"
               color="white"
               size="lg"
+              fontSize="xl"
               type="submit"
               isLoading={isSubmitting}
             >

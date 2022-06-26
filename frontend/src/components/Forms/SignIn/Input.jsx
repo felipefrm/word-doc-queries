@@ -2,12 +2,12 @@ import { FormLabel, Input as InputChakra, Stack } from "@chakra-ui/react";
 
 export function Input({ id, label, placeholder, register }) {
   return (
-    <Stack spacing={4}>
+    <Stack spacing={2}>
       <FormLabel
         htmlFor={id}
         ml={4}
         fontWeight={500}
-        fontSize="lg"
+        fontSize="xl"
       >
         {label}
       </FormLabel>
