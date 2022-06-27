@@ -67,7 +67,7 @@ export function WordSentences() {
       <Flex h="50vh" mt="8" overflowY="auto" direction="column" gap="4">
         {sentences.length > 0 &&
           sentences.map((text, index) => (
-            <Sentence word={word} index={index}>{text}</Sentence>
+            <Sentence key={index} word={word} index={index}>{text}</Sentence>
           ))
         }
       </Flex>

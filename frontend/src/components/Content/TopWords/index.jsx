@@ -82,7 +82,7 @@ export function TopWords() {
       <Flex h="55vh" overflowY="auto" direction="column" gap="4">
         {topWords.length > 0 &&
           topWords.map((word, index) => (
-            <Word word={word} />
+            <Word key={word[0]} word={word} />
           ))
         }
       </Flex>
