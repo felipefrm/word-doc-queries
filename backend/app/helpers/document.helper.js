@@ -16,7 +16,7 @@ module.exports = {
 
         for (let i = 0; i < doc.length; i++) {
             if (!sentenceSeparators.includes(doc[i])) {
-                if (!sentences[sentenceCount] === '' || this.isUpperCase(doc[i])) {
+                if (sentences[sentenceCount] !== '' || !this.isLowerCase(doc[i])) {
                     sentences[sentenceCount] += doc[i]
                 }
             } else {
@@ -77,8 +77,8 @@ module.exports = {
         return array;
     },
 
-    isUpperCase(str) {
-        return str == str.toUpperCase();
+    isLowerCase(str) {
+        return str == str.toLowerCase();
     }
 }
 
