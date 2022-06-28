@@ -20,7 +20,7 @@ export function TopWords() {
     const { count, length } = data
 
     if (count < 0 || length < 0) {
-      toast.info({ title: 'Entrada inválida', description: 'Valores não podem ser negativos.' })
+      toast.info({ title: 'Entrada inválida!', description: 'Valores não podem ser negativos.' })
       return
     }
 

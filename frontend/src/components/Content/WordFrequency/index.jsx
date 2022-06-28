@@ -19,7 +19,7 @@ export function WordFrequency() {
 
   const onSubmit = async (data) => {
     if (!isWord(data.word)) {
-      toast.info({ title: 'Entrada inválida', description: 'Insira uma palavra.' })
+      toast.info({ title: 'Entrada inválida!', description: 'Insira uma palavra.' })
       return
     }
 
