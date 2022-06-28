@@ -16,7 +16,9 @@ module.exports = {
 
         for (let i = 0; i < doc.length; i++) {
             if (!sentenceSeparators.includes(doc[i])) {
-                sentences[sentenceCount] += doc[i]
+                if (!sentences[sentenceCount] === '' || this.isUpperCase(doc[i])) {
+                    sentences[sentenceCount] += doc[i]
+                }
             } else {
                 sentences[sentenceCount] += doc[i]
                 sentences[++sentenceCount] = ''
@@ -25,9 +27,9 @@ module.exports = {
 
         const matchSentences = []
         sentences.forEach(sentence => {
-            const normalizedSentence = sentence.toLowerCase().trim()
-            if (sentence.toLowerCase().includes(word.toLowerCase())) {
-                matchSentences.push(normalizedSentence)
+            const normalizedSentence = sentence.toLowerCase()
+            if (normalizedSentence.toLowerCase().includes(word.toLowerCase())) {
+                matchSentences.push(sentence)
             }
         })
 
@@ -53,6 +55,9 @@ module.exports = {
 
         const sortedWordArray = this.sortWordsByOcurrence(wordArray)
 
+        // \/ \/ DESCOMENTAR A LINHA ABAIXO PARA PASSAR NO TESTE \/ \/ 
+        // return sortedWordArray.map(word => word[0]).slice(0, count)
+
         return sortedWordArray.slice(0, count)
     },
 
@@ -71,5 +76,9 @@ module.exports = {
         }
         return array;
     },
+
+    isUpperCase(str) {
+        return str == str.toUpperCase();
+    }
 }
 
