@@ -1,7 +1,8 @@
-import { Flex, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Flex, FormControl } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import { InputMethod as Input } from "../../Forms/InputMethod";
 import { SubmitButton } from "../SubmitButton";
 import { Word } from "./Word";
 
@@ -11,11 +12,7 @@ import { useToast } from "../../../hooks/useToast";
 export function TopWords() {
   const toast = useToast()
 
-  const {
-    handleSubmit,
-    register,
-    formState: { isSubmitting },
-  } = useForm()
+  const { handleSubmit, register, formState: { isSubmitting } } = useForm()
 
   const [topWords, setTopWords] = useState([])
 
@@ -27,22 +24,13 @@ export function TopWords() {
       return
     }
 
-    api.post('documents/top-words', {
-      count,
-      minWordLength: length
-    })
+    api.post('documents/top-words', { count, minWordLength: length })
       .then(response => setTopWords(response.data))
       .catch(err => toast.error({ title: 'Falha ao executar método.' }))
   };
 
-  console.log(topWords)
-
   return (
-    <Flex
-      mx={10}
-      mt={20}
-      direction="column"
-    >
+    <Flex mx={10} mt={20} direction="column" >
       <FormControl
         as="form"
         onSubmit={handleSubmit(onSubmit)}
@@ -51,27 +39,19 @@ export function TopWords() {
         <Flex direction="column">
           <Flex gap="20" align="flex-end" wrap={["wrap", "wrap", "nowrap"]}>
             <Flex direction="column" w="full" maxW="350px">
-              <FormLabel htmlFor="count" fontSize="xl">Count</FormLabel>
               <Input
                 id="count"
                 type="number"
-                size="lg"
-                {...register("count")}
-                w="100%"
-                borderRadius={4}
-                focusBorderColor="black"
+                label="Count"
+                register={register("count")}
               />
             </Flex>
             <Flex direction="column" w="full" maxW="350px">
-              <FormLabel htmlFor="length" fontSize="xl">Minimum Word Length</FormLabel>
               <Input
                 id="length"
                 type="number"
-                size="lg"
-                {...register("length")}
-                w="100%"
-                borderRadius={4}
-                focusBorderColor="black"
+                label="Minimum Word Length"
+                register={register("length")}
               />
             </Flex>
           </Flex>
@@ -80,8 +60,8 @@ export function TopWords() {
       </FormControl>
 
       <Flex h="55vh" overflowY="auto" direction="column" gap="4">
-        {topWords.length > 0 &&
-          topWords.map((word, index) => (
+        {
+          topWords.map((word) => (
             <Word key={word[0]} word={word} />
           ))
         }

@@ -1,7 +1,8 @@
-import { Flex, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
+import { Flex, FormControl, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import { InputMethod as Input } from "../../Forms/InputMethod";
 import { SubmitButton } from "../SubmitButton";
 
 import { useToast } from "../../../hooks/useToast";
@@ -11,11 +12,7 @@ import { isWord } from "../../../utils";
 export function WordFrequency() {
   const toast = useToast()
 
-  const {
-    handleSubmit,
-    register,
-    formState: { isSubmitting },
-  } = useForm()
+  const { handleSubmit, register, formState: { isSubmitting } } = useForm()
 
   const [frequency, setFrequency] = useState(0)
   const [word, setWord] = useState('')
@@ -33,25 +30,17 @@ export function WordFrequency() {
   };
 
   return (
-    <Flex
-      mx={10}
-      mt={20}
-      direction="column"
-    >
+    <Flex mx={10} mt={20} direction="column" >
       <FormControl
         as="form"
         onSubmit={handleSubmit(onSubmit)}
         isRequired
       >
-        <Flex direction="column" w="full" maxW="400px">
-          <FormLabel htmlFor="word" fontSize="xl">Digite uma palavra</FormLabel>
+        <Flex direction="column">
           <Input
             id="word"
-            type="text"
-            size="lg"
-            {...register("word")}
-            borderRadius={4}
-            focusBorderColor="black"
+            label="Digite uma palavra"
+            register={register("word")}
           />
           <SubmitButton isLoading={isSubmitting} />
         </Flex>

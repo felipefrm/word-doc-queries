@@ -1,6 +1,6 @@
-import { FormLabel, Input as InputChakra, Stack } from "@chakra-ui/react";
+import { FormLabel, Input, Stack } from "@chakra-ui/react";
 
-export function Input({ id, label, placeholder, register }) {
+export function InputSignIn({ id, label, placeholder, register }) {
   return (
     <Stack spacing={2}>
       <FormLabel
@@ -11,7 +11,7 @@ export function Input({ id, label, placeholder, register }) {
       >
         {label}
       </FormLabel>
-      <InputChakra
+      <Input
         type={id}
         id={id}
         placeholder={placeholder}

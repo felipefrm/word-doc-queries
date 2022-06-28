@@ -12,9 +12,10 @@ import { useEffect } from "react";
 import { useForm } from 'react-hook-form'
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { Input } from "../components/Forms/SignIn/Input";
+import { InputSignIn as Input } from "../components/Forms/InputSignIn";
 import { useAuth } from "../contexts/auth";
 import { useToast } from "../hooks/useToast";
+
 import bgImg from '../../assets/images/bg.png'
 
 export function SignIn() {
