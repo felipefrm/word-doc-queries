@@ -5,11 +5,16 @@ require("dotenv-safe").config();
 const jwt = require("jsonwebtoken");
 
 routes.post(`/users/login`, async (req, res) => {
+
+  if (!req.body?.email || !req.body?.password) {
+    return res.json({ error: "Invalid request body" });
+  }
+
   const user = await User.findOne({
     where: { email: req.body.email, password: req.body.password },
   });
 
-  if (!user) return res.json({error: "Invalid credentials"});
+  if (!user) return res.json({ error: "Invalid credentials" });
 
   const token = jwt.sign(
     {
