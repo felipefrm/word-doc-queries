@@ -1,3 +1,7 @@
 export function isWord(input) {
-  return input.match(/[a-zÀ-ú]+/gmui).length === 1
+  try {
+    return input.match(/[a-zÀ-ú]+/gmui).length === 1
+  } catch (e) {
+    return false
+  }
 }
