@@ -27,8 +27,9 @@ module.exports = {
 
         const matchSentences = []
         sentences.forEach(sentence => {
-            const normalizedSentence = sentence.toLowerCase()
-            if (normalizedSentence.toLowerCase().includes(word.toLowerCase())) {
+            const sentenceToArray = this.stringToWordsArray(sentence.toLowerCase())
+
+            if (sentenceToArray?.includes(word.toLowerCase())) {
                 matchSentences.push(sentence)
             }
         })
