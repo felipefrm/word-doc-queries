@@ -1,4 +1,4 @@
-import { Flex, FormControl } from "@chakra-ui/react";
+import { Flex, FormControl, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -12,7 +12,11 @@ import { useToast } from "../../../hooks/useToast";
 export function TopWords() {
   const toast = useToast()
 
-  const { handleSubmit, register, formState: { isSubmitting } } = useForm()
+  const {
+    handleSubmit,
+    register,
+    formState: { isSubmitting, isSubmitted }
+  } = useForm()
 
   const [topWords, setTopWords] = useState([])
 
@@ -30,7 +34,7 @@ export function TopWords() {
   };
 
   return (
-    <Flex mx={10} mt={20} direction="column" >
+    <>
       <FormControl
         as="form"
         onSubmit={handleSubmit(onSubmit)}
@@ -59,13 +63,21 @@ export function TopWords() {
         </Flex>
       </FormControl>
 
-      <Flex h="55vh" overflowY="auto" direction="column" gap="4">
-        {
-          topWords.map((word) => (
-            <Word key={word[0]} word={word} />
-          ))
-        }
-      </Flex>
-    </Flex>
+      {
+        isSubmitted && topWords.length === 0 ? (
+          <Text fontSize="xl">
+            Nenhuma palavra encontrada nestes critérios.
+          </Text>
+        ) : (
+          <Flex h={["40vh", "40vh", "55vh"]} overflowY="auto" direction="column" gap="4">
+            {
+              topWords.map((word) => (
+                <Word key={word[0]} word={word} />
+              ))
+            }
+          </Flex>
+        )
+      }
+    </>
   )
 }

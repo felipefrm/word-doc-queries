@@ -30,7 +30,7 @@ export function WordFrequency() {
   };
 
   return (
-    <Flex mx={10} mt={20} direction="column" >
+    <>
       <FormControl
         as="form"
         onSubmit={handleSubmit(onSubmit)}
@@ -51,6 +51,6 @@ export function WordFrequency() {
           A palavra <Text as="span" fontWeight="bold">{word}</Text> foi encontrada {frequency} {frequency > 1 ? 'vezes' : 'vez'} do texto.
         </Text>
       }
-    </Flex>
+    </>
   )
 }

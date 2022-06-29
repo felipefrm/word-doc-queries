@@ -31,7 +31,7 @@ export function WordSentences() {
   };
 
   return (
-    <Flex mx={10} mt={20} direction="column" >
+    <>
       <FormControl
         as="form"
         onSubmit={handleSubmit(onSubmit)}
@@ -59,6 +59,6 @@ export function WordSentences() {
           ))
         }
       </Flex>
-    </Flex>
+    </>
   )
 }
