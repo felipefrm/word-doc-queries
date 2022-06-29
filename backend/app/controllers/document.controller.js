@@ -37,8 +37,10 @@ routes.post(`/documents/top-words`, checkLogin, async (req, res) => {
         return res.status(400).json({ error: "Invalid request body" });
     }
 
-    if (typeof (req.body.count) !== 'number' || typeof (req.body.minWordLength) !== 'number') {
-        return res.status(400).json({ error: "Fields must be an integer" });
+    console.log(!!Number(req.body.count))
+
+    if (!Number(req.body.count) || !Number(req.body.minWordLength)) {
+        return res.status(400).json({ error: "Fields must be an number" });
     }
 
     const document = await Document.findOne();
