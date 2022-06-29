@@ -23,7 +23,7 @@ export function SignIn() {
   const {
     handleSubmit,
     register,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm()
 
   const { signIn, signed } = useAuth()
@@ -80,7 +80,7 @@ export function SignIn() {
             gap="16"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <FormControl >
+            <FormControl>
               <Stack spacing={10}>
                 <Input
                   id="email"
